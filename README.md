@@ -1,77 +1,50 @@
-```markdown
+
 # DAG-Based Framework for Bias Detection in Generative Video Models
 
-This repository contains the LaTeX source code for a research paper proposing a DAG-based framework for bias detection in generative video models.  The paper emphasizes performance evaluation across different conditions and provides a systematic, extensible, and user-driven way to ensure awareness and quantitative assessment of biases in generative AI video content.
+This repository contains a Directed Acyclic Graph (DAG)-based framework designed to detect and mitigate biases in generative video models. Our work addresses the growing concern that AI-generated videos can perpetuate and amplify societal biases, particularly regarding gender, race, age, and other sensitive attributes.
 
-## Overview
+## Introduction
 
-Generative AI models that create videos from text often reflect unintended biases in their outputs. This framework addresses this problem by providing a modular and scalable approach to evaluate and compare these biases.  The framework uses a Directed Acyclic Graph (DAG) to break down bias detection into testable components, focusing on measuring model performance across different conditions.
+Generative AI video models, while powerful, are trained on vast datasets that often reflect existing societal inequalities.  This can lead to models producing outputs that reinforce stereotypes and underrepresent certain groups. Our framework offers a systematic way to:
 
-## Key Features
+*   **Evaluate** the extent of bias in different video generation models.
+*   **Compare** the performance of various models in generating diverse and representative content.
+*   **Provide insights** that can guide model developers in mitigating biases and improving fairness.
 
-*   **DAG-Based Architecture:** Provides modularity, clarity, and a clear execution flow for bias evaluation.
-*   **Semi-Automated Prompt Evolution:** Uses a language model (LLM) to generate variations of prompts for comprehensive bias testing.
-*   **Multiple Video Model Support:** Enables parallel testing and comparison of API-based and local video generation models.
-*   **Extensible Bias Detection Nodes:** Supports various bias categories (e.g., gender, race, age) and allows users to define custom criteria.
-*   **Technical Evaluation and Scoring:** Aggregates results into a structured scoring matrix, comparing models and providing explanatory reports.
-*   **Apache Airflow Implementation Example:** Provides a simplified Python code snippet demonstrating how to implement the framework using a DAG execution engine.
+## Core Components
 
-## Contents
+Our framework leverages a modular DAG architecture, where each node performs a specific task in the bias detection pipeline. Key components include:
 
-*   `main.tex`:  The main LaTeX source file containing the paper's content.
-*   `dag diag.png`: Image showing a DAG diagram for bias evaluation.
-*   `seqex.png`: Image showing the sequence of steps in the bias detection pipeline.
+*   **Prompt Generation:** A semi-automated process that uses Language Models (LLMs) to generate diverse prompts to probe for biases.  Starting from a base prompt, the system creates variations that emphasize different attributes like gender, ethnicity, and age.
+*   **Video Generation:** Executes the generated prompts on various generative video models (both local and API-based) to produce video outputs.
+*   **Content Extraction:** Analyzes the generated videos to extract relevant information, such as key frames and textual descriptions generated using vision-language models.
+*   **Bias Analysis:** Employs dedicated modules to analyze the extracted content for different types of biases, including gender stereotypes, racial representation imbalances, and age representation disparities.  These modules produce quantitative indicators of bias.
+*   **Aggregation & Reporting:**  Aggregates the results from all analysis modules into a structured scoring matrix, comparing model performance and providing explanatory reports detailing the detected biases.
 
-## Dependencies
+## Key Benefits
 
-To compile the LaTeX document, you will need the following:
+*   **Modularity and Extensibility:** The DAG structure allows for easy addition or modification of bias detection modules. New bias categories can be integrated without overhauling the entire system.
+*   **Comprehensive Evaluation:** The framework ensures that models are evaluated under a wide range of conditions using diverse prompts.
+*   **Quantitative and Explainable Results:** The framework provides quantitative scores and explanatory reports that allow for a deeper understanding of the types of biases present in different models.
+*   **Fair Comparison:** The framework ensures that all models are evaluated under identical conditions, allowing for a fair comparison of their performance.
 
-*   A LaTeX distribution (e.g., TeX Live, MiKTeX).
-*   The following LaTeX packages:
-    *   `inputenc`
-    *   `graphicx`
-    *   `authblk`
-    *   `listings`
-    *   `minted`
-    *   `caption`
-    *   `hyperref`
+## Getting Started
 
-## Compilation
+This repository primarily houses the theoretical framework and a high-level implementation example. The detailed implementation is complex and distributed across different systems. This repository is intended to demonstrate our work.
 
-To compile the `main.tex` file into a PDF, use the following command:
+## Future Work
 
-```bash
-pdflatex main.tex
-bibtex main  # Only needed if you switch to BibTeX
-pdflatex main.tex
-pdflatex main.tex
-```
+We are currently exploring integrating this framework with decentralized and privacy-preserving platforms. Specifically, we are investigating the possibility of deploying this bias detection pipeline within:
 
-**Note:**  The `pdflatex` command (or equivalent for your LaTeX distribution) may need to be run multiple times to resolve all references and citations correctly.  The `bibtex` command is only needed if you change the reference style to use BibTeX instead of the included `thebibliography` environment.
+*   **Torus Network:** Torus is envisioned as a Layer1 self-assembling and self-optimizing autonomous super-swarm. Integrating our framework within Torus could allow the bias detection pipeline to become a self-organizing component within a larger, dynamically evolving ecosystem. This means the bias detection process itself could be optimized and adapted based on the incentives and permissions managed by the Torus swarm, leading to a more resilient and adaptive bias mitigation strategy.
+*   **JAM (JOIN-ACCUMULATE MACHINE):** JAM, as a formal system focused on set operations, dictionaries, and tuples, provides a foundation for reasoning about and implementing our bias detection pipeline. We envision encoding the data structures and algorithms used in our framework within JAM to rigorously define and verify its behavior. For example, the aggregation of bias scores could be formally specified as a JOIN-ACCUMULATE operation. This could enable us to prove properties about the correctness and fairness of the bias detection process, and to optimize the framework for efficient execution. Furthermore, the permissions and incentivized participation in the Torus architecture can use JAM to more formally verify the agents actions and access.
+*   **Bittensor:** A decentralized, blockchain-based machine learning network. Deploying bias detection on Bittensor could leverage the network's distributed compute resources for large-scale bias analysis, allowing for cost-effective and scalable bias evaluation and fostering a more equitable AI ecosystem.
 
-## References
-
-The references are explicitly included within the `thebibliography` environment in the `main.tex` file.  To add or modify references, edit this section directly.  (See the LaTeX source for details.)
-
-## Example Scoring Matrix
-
-```
-| Bias Category             | Model A | Model B | Model C |
-| ------------------------- | ------- | ------- | ------- |
-| Gender Representation (score/10) | 3.5     | 7.5     | 9.0     |
-| Racial Diversity (score/10)    | 4.0     | 5.5     | 8.0     |
-| Age Diversity (score/10)       | 2.0     | 5.0     | 6.5     |
-```
-
-Higher scores indicate more balanced representation.
+These integrations aim to enhance the transparency, accountability, and fairness of generative video models by leveraging blockchain technology and decentralized computation. Further research will focus on adapting the framework for these environments, addressing challenges related to data privacy, computational cost, and decentralized governance. The goal is to allow the framework to participate in the value and competency architecture of these next generation systems, and allow for constant optimization and correctness.ational cost, and decentralized governance.  The goal is to allow the framework to participate in the value and competency architecture of these next generation systems, and allow for constant optimization.
 
 ## License
 
-This project is licensed under the [Insert License Here] - see the `LICENSE` file for details (if you have one).
-
-## Contributing
-
-Contributions are welcome! Please submit a pull request with your changes.
+This project is licensed under the MIT License - see the `LICENSE` file for details.
 
 ## Authors
 
@@ -80,5 +53,4 @@ Contributions are welcome! Please submit a pull request with your changes.
 
 ## Contact
 
-[Your Email Address]
-```
+rnilsson@oplyt.com
