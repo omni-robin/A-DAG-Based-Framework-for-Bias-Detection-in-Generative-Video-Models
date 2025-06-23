@@ -8,6 +8,7 @@ version = "0.1.0"
 dependencies = [
     "pillow",
     "imageio",
+    "fastapi",
 ]
 
 [tool.setuptools.packages.find]
