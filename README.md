@@ -105,3 +105,15 @@ results = run_video_analytics(
 
 The function loads the video, executes each analytics node on the frames, and
 writes a `report.json` file with all findings.
+
+## Simple Web Portal
+
+The package now includes a minimal FastAPI application that lets you register
+evaluation nodes and video generation endpoints.  You can run it with
+
+```bash
+uvicorn dag_framework.portal:app --reload
+```
+
+Once running, you can `POST` to `/nodes/evaluation` or `/models` to add
+components for your bias detection experiments.
