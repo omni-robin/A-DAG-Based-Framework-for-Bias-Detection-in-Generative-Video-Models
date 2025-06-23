@@ -1,13 +1,20 @@
 # Development Tasks
 
-This document lists initial tasks to build the DAG-based bias detection framework.
+This document tracks the major tasks for the project and their status.
 
-## 1. Implement Core DAG Structure
-- Create a `Node` base class supporting child nodes and a `run` method.
-- Provide subclasses like `BiasDefinitionNode` and `AnalyticsNode`.
+## Completed
 
-## 2. Build Sample Analytics
-- Implement simple analytics functions (e.g., word counts) demonstrating how to detect bias.
-- Provide an example pipeline in `examples/` that composes nodes and runs analytics on sample data.
+* Implement the core DAG structure with `Node`, `BiasDefinitionNode`, and `AnalyticsNode` classes.
+* Create sample analytics functions and an example pipeline under `examples/`.
+* Add a `GenderBiasNode` with unit tests.
+* Provide a video analytics helper for running nodes on video files.
+* Implement a simple prompt evolution module.
+* Add a minimal FastAPI portal for registering nodes and models.
 
-These tasks will form the foundation for more advanced bias detection modules.
+## Next Steps
+
+* Expand analytics nodes (e.g., racial and age bias detectors).
+* Aggregate results from multiple nodes into a scoring matrix.
+* Increase test coverage for the portal and prompt evolution functions.
+* Document a full evaluation workflow using the portal and analytics nodes.
+* Investigate integration with decentralized platforms such as Torus, JAM and Bittensor.
