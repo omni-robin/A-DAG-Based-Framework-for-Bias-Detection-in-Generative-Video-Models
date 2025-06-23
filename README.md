@@ -66,3 +66,24 @@ python examples/simple_pipeline.py
 ```
 
 See `TASKS.md` for initial development tasks.
+
+## Gender Bias Node Example
+
+The repository now includes a minimal `GenderBiasNode` demonstrating how bias
+checks can be plugged into a DAG. The node accepts a list of video frames and
+returns a JSON report containing male/female counts and a parity score. It is
+designed to work with pluggable face detectors and gender classifiers so you can
+swap in lightweight models of your choice.
+
+```python
+from dag_framework import GenderBiasNode, Frame
+from PIL import Image
+
+# frames is a list of Frame(image=Image.Image, caption=str)
+node = GenderBiasNode(detector=my_face_fn, classifier=my_gender_fn)
+result = node.run(frames)
+print(result)
+```
+
+Unit tests under `tests/` show how to create synthetic frames and verify the
+parity metric.
