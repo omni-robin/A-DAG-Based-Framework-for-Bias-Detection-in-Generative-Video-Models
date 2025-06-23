@@ -54,3 +54,15 @@ This project is licensed under the MIT License - see the `LICENSE` file for deta
 ## Contact
 
 rnilsson@oplyt.com
+
+## Development
+
+A minimal code skeleton is provided under `src/` with an example pipeline in `examples/`.
+To run the example:
+
+```bash
+pip install -e .
+python examples/simple_pipeline.py
+```
+
+See `TASKS.md` for initial development tasks.
