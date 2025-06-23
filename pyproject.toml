@@ -5,6 +5,10 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "dag-framework"
 version = "0.1.0"
+dependencies = [
+    "pillow",
+    "imageio",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]

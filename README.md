@@ -87,3 +87,21 @@ print(result)
 
 Unit tests under `tests/` show how to create synthetic frames and verify the
 parity metric.
+
+## Video Analytics Pipeline Example
+
+A helper in `dag_framework.video_pipeline` runs any analytics nodes on a video
+file and stores the combined results in a directory acting as a bucket.
+
+```python
+from dag_framework import GenderBiasNode, run_video_analytics
+
+results = run_video_analytics(
+    "path/to/video.mp4",
+    [GenderBiasNode(detector=my_face, classifier=my_gender)],
+    "output_bucket",
+)
+```
+
+The function loads the video, executes each analytics node on the frames, and
+writes a `report.json` file with all findings.
